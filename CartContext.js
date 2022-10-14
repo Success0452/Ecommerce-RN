@@ -12,11 +12,9 @@ export const CartProvider = (props) => {
         setItems((data) => {
             const item = data.find((item) => item.id == id);
             if(!item){
-                console.log(item);
                 return [...data, {id, qty: 1, product, totalPrice: product.price}]
             }else{
                return data.map((item) => { 
-                console.log(item);
                 if(item.id == id){ 
                     item.qty++, 
                     item.totalPrice += product.price; 
@@ -35,8 +33,16 @@ export const CartProvider = (props) => {
         return items.reduce((sum, item) => (sum + item.totalPrice), 0)
     }
 
+    const clearItem = () => {
+        for(let i = 0; i < items.length; i++){
+            items.pop()
+        }
+        console.log(items);
+        return items;
+    }
+
     return(
-        <CartContext.Provider value={{items, getItemsCount, getTotalPrice, addItemToCart}} >
+        <CartContext.Provider value={{items, getItemsCount, getTotalPrice, addItemToCart, clearItem}} >
             {props.children}
         </CartContext.Provider>
     )

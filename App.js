@@ -8,6 +8,7 @@ import { Cart } from "./screens/Cart";
 import { CartProvider } from "./CartContext";
 import { CartIcon } from "./components/CartIcon";
 import { BuyIcon } from "./components/BuyIcon";
+import { Purchase } from "./screens/Purchase";
 
 const Stack = createNativeStackNavigator();
 
@@ -30,6 +31,7 @@ const Stack = createNativeStackNavigator();
       headerRight: () => <CartIcon navigation={navigation} />, 
       headerLeft: () => <BuyIcon navigation={navigation} />})}
     />
+    <Stack.Screen name="Purchase" component={Purchase} options={{headerShown: true}}/>
     </Stack.Navigator>
   </NavigationContainer>
     </CartProvider>

@@ -1,12 +1,19 @@
-import React from "react";
+import React, {useContext} from "react";
 import { View, Button, Text, StyleSheet } from "react-native";
+import { CartContext } from "../CartContext";
 
 
 export const BuyIcon = ({navigation}) => {
 
+    const { clearItem } = useContext(CartContext);
+
     return(
         <View style={styles.container}>
-            <Text style={styles.text} onPress={() => {navigation.navigate('Payment')}}>
+            <Text style={styles.text} onPress={() => {
+                navigation.navigate('Purchase');
+                clearItem();
+            }
+                }>
                 Purchase
             </Text>
         </View>
